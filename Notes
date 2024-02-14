@@ -1,0 +1,93 @@
+/** public void addProduct(Integer productID, String productName, Double productPrice, String vendorName)
+            throws ProductException, VendorException {
+        //add logging
+        //generate product id
+        if(productName.isEmpty()) {
+            //add logging
+            throw new ProductException("Product Name cannot blank");
+        }
+        else if (productPrice <= 0) {
+            //add logging
+            throw new ProductException("Product price must be a positive number greater than zero");
+        }
+        else if (vendorName.isEmpty()){
+            //add logging
+            throw new VendorException("Vendor name cannot be blank");
+        }
+        else if (vendors does not contain vendorName) {
+            //add logging
+            throw new ProductException("Vendor does not currently exist; please add vendor first and then add product");
+        }
+        Product x = new Product(productID, productName, productPrice, vendorName);
+        products.add(x);
+    } **/
+
+
+    /**public void addVendor(String vendorName) throws VendorException {
+            //add logging
+            if(vendorName.isEmpty()){
+                //add logging
+                throw new VendorException("Vendor name cannot be blank");
+            }
+            else if(vendors.contains(vendorName)){
+                //add logging
+                throw new VendorException("Vendor already exists");
+            }
+            Vendor v = new Vendor();
+            vendors.add(v);
+        }**/
+
+
+   /**
+       public void getAllVendorsHandler(Context context){
+           List<Vendor> vendors = vendorService.retrieveVendors();
+           context.json(vendors);
+       }
+
+       //where do we put in checks for null values entered and matching (non-unique) values entered?
+       public void postVendorHandler(Context context) {
+           ObjectMapper om = new ObjectMapper();
+           try{
+               Vendor v = om.readValue(context.body(), Vendor.class);
+               vendorService.addVendor(v);
+               context.status(201);
+           }catch (JsonProcessingException e) {
+               context.status(400);
+           }
+       }
+       public void getAllProductsHandler(Context context){
+           List<Product> productList = productService.viewAllProduct();
+           context.json(productList);
+       }
+
+       public static void getProductHandler(Context context){
+
+       }
+
+       //where do we put in checks for null values entered and matching (non-unique) values entered?
+       public void postProductHandler(Context context) throws ProductException {
+           ObjectMapper om = new ObjectMapper();
+           try{
+               Product x = om.readValue(context.body(), Product.class);
+               productService.addProduct(x);
+               context.status(201);
+           }catch (JsonProcessingException e) {
+               context.status(400);
+           }
+       }
+
+       public static void putProductHandler(Context context){
+
+       }
+
+       public static void deleteProductHandler(Context context){
+
+       }
+   } **/
+
+
+   /** does this make sense to generate a unique productID each time??? would this go under the setter instead???
+    private final AtomicLong id = new AtomicLong(1);
+    public long getNext() {
+       return id.getAndIncrement();
+    } **/
